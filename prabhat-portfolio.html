@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prabhat Dubey — Full Stack Developer</title>
+    <meta
+      name="description"
+      content="Prabhat Dubey — Full Stack Developer. Django, Angular, Firebase, AWS. Professional single-page resume and services website."
+    />
+    <style>
+      :root {
+        --bg: #0f1724;
+        --card: #0b1220;
+        --muted: #94a3b8;
+        --accent: #06b6d4;
+        --glass: rgba(255, 255, 255, 0.04);
+        --white: #e6eef8;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: linear-gradient(180deg, #071023 0%, #081327 100%);
+        color: var(--white);
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 28px;
+      }
+
+      /* Header / Nav */
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--accent), #7c3aed);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+      nav {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+      .cta {
+        background: var(--accent);
+        color: #022;
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-weight: 600;
+      }
+
+      /* Mobile nav */
+      .menu-btn {
+        display: none;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 8px;
+        border-radius: 8px;
+      }
+      @media (max-width: 860px) {
+        nav {
+          display: none;
+        }
+        .menu-btn {
+          display: inline-flex;
+        }
+      }
+
+      /* Hero */
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 24px;
+        margin-top: 26px;
+        align-items: start;
+      }
+      .card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.01)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        padding: 22px;
+        border-radius: 14px;
+      }
+      .name {
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0;
+      }
+      .role {
+        color: var(--muted);
+        margin-top: 6px;
+      }
+      .contact {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      /* Skills / summary */
+      .summary {
+        margin-top: 12px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .skill {
+        background: var(--glass);
+        padding: 8px 10px;
+        border-radius: 10px;
+        font-size: 13px;
+        color: var(--white);
+      }
+
+      /* Experience */
+      .section {
+        margin-top: 28px;
+      }
+      .section h2 {
+        margin: 0 0 12px 0;
+        font-size: 18px;
+      }
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .item {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+      .item .meta {
+        min-width: 120px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .item .body {
+        background: rgba(255, 255, 255, 0.02);
+        padding: 14px;
+        border-radius: 10px;
+        flex: 1;
+      }
+      .item .title {
+        margin: 0;
+        font-weight: 700;
+      }
+      .item .company {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .item ul {
+        margin: 8px 0 0 18px;
+        color: var(--muted);
+      }
+
+      /* Projects grid */
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .proj {
+        padding: 14px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .proj h3 {
+        margin: 0;
+        font-size: 15px;
+      }
+      .small {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      footer {
+        margin: 36px 0 20px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      /* Right column */
+      .right .card {
+        position: relative;
+        top: auto;
+      }
+      .stats {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+      .stat {
+        background: rgba(255, 255, 255, 0.02);
+        padding: 10px;
+        border-radius: 10px;
+        min-width: 120px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 980px) {
+        .hero {
+          grid-template-columns: 1fr 300px;
+        }
+      }
+      @media (max-width: 760px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .right {
+          order: 2;
+        }
+        .menu {
+          display: none;
+        }
+      }
+
+      /* Resume-like print-friendly adjustments */
+      @media print {
+        body {
+          background: white;
+          color: black;
+        }
+        header,
+        .menu-btn,
+        .cta {
+          display: none;
+        }
+        .container {
+          padding: 0;
+        }
+      }
+
+      /* Simple subtle hover */
+      .item .body:hover {
+        transform: translateY(-4px);
+        transition: all 180ms ease;
+      }
+
+      /* Mobile menu overlay */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 6, 23, 0.9);
+        padding: 28px;
+      }
+      .mobile-menu .close {
+        display: flex;
+        justify-content: flex-end;
+      }
+      .mobile-menu nav {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin-top: 18px;
+      }
+      @media (max-width: 860px) {
+        .mobile-menu {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="brand">
+          <div class="avatar">PD</div>
+          <div>
+            <div style="display: flex; gap: 8px; align-items: center">
+              <h1 class="name">Prabhat Dubey</h1>
+              <span style="font-size: 13px; color: var(--muted)"
+                >Full Stack Developer</span
+              >
+            </div>
+            <div class="role">Django · Angular · Firebase · AWS · NestJS</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px">
+          <nav class="menu">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <a class="cta" href="#contact">Hire / Contact</a>
+          <button class="menu-btn" aria-label="menu" id="menuBtn">☰</button>
+        </div>
+      </header>
+
+      <main class="hero">
+        <section class="card left">
+          <p class="small" id="about">
+            📍 Civil Line Bada Bazar, Buxar, Bihar, India · 📧
+            prabhat.cioreview@gmail.com · ☎️ +91 7908679275
+          </p>
+          <p class="summary">
+            Confident and determined Full Stack Developer with extensive
+            experience in developing and managing software solutions across
+            banking, education, and insurance domains. Proficient with both
+            frontend and backend technologies, and skilled at delivering
+            high-quality, scalable applications.
+          </p>
+
+          <div class="section" id="experience">
+            <h2>Work Experience</h2>
+            <div class="timeline">
+              <div class="item">
+                <div class="meta">
+                  Aug 2023 — Present<br /><span class="small">Pune, India</span>
+                </div>
+                <div class="body">
+                  <p class="title">
+                    Full Stack Developer, <span class="company">KPMG</span>
+                  </p>
+                  <ul>
+                    <li>
+                      Built solutions for TPBank (Vietnam), Vendor Risk
+                      Management Tool (Canara Bank), and ESG projects using
+                      Angular and Django.
+                    </li>
+                    <li>
+                      Worked on applications from scratch and received the
+                      Impact Award for delivering quality under deadlines.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="meta">
+                  Feb 2023 — Jul 2023<br /><span class="small"
+                    >Delhi, India</span
+                  >
+                </div>
+                <div class="body">
+                  <p class="title">
+                    Full Stack Developer,
+                    <span class="company">QBH Solution Pvt Ltd</span>
+                  </p>
+                  <ul>
+                    <li>
+                      Developed an ERP Inventory Management System using Angular
+                      and NestJS focused on scalability and security.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="meta">
+                  Jul 2022 — Feb 2023<br /><span class="small"
+                    >Delhi, India</span
+                  >
+                </div>
+                <div class="body">
+                  <p class="title">
+                    Full Stack Developer,
+                    <span class="company">Skugal Technologies Pvt Ltd</span>
+                  </p>
+                  <ul>
+                    <li>
+                      Built a school management platform using Angular and
+                      Firestore; integrated AWS SNS, S3 and Cashfree payments.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="meta">
+                  Jan 2022 — Apr 2022<br /><span class="small"
+                    >Bangalore, India</span
+                  >
+                </div>
+                <div class="body">
+                  <p class="title">
+                    Information Technology Trainee,
+                    <span class="company">Edify Insurance Brokers Pvt Ltd</span>
+                  </p>
+                  <ul>
+                    <li>
+                      Developed frontend for an insurance portal using HTML,
+                      CSS, and JavaScript. Fixed logical and CSS bugs.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="meta">
+                  Aug 2020 — Nov 2020<br /><span class="small"
+                    >Kolkata, India</span
+                  >
+                </div>
+                <div class="body">
+                  <p class="title">
+                    Software Developer, <span class="company">Spotings</span>
+                  </p>
+                  <ul>
+                    <li>
+                      Worked with Django and DRF to integrate data from Sales
+                      platforms (Zoho, Salesforce, Pipedrive).
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section" id="projects">
+            <h2>Projects</h2>
+            <div class="projects">
+              <div class="proj">
+                <h3>Inventory Management System</h3>
+                <p class="small">
+                  ERP system using Angular & NestJS. Deployed for real users;
+                  focused on scalability and security.
+                </p>
+              </div>
+              <div class="proj">
+                <h3>School Management System</h3>
+                <p class="small">
+                  Built with Angular and Firebase; integrated payments and AWS
+                  services for notifications and storage.
+                </p>
+              </div>
+              <div class="proj">
+                <h3>Sales Data Integration</h3>
+                <p class="small">
+                  Django-based integration for Sales platforms (Salesforce,
+                  Zoho, Pipedrive) for centralised data access.
+                </p>
+              </div>
+              <div class="proj">
+                <h3>Vehicle Tracking System</h3>
+                <p class="small">
+                  University project using GPS & Google Maps; GSM-based
+                  real-time location tracking.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="section" id="skills">
+            <h2>Skills & Technologies</h2>
+            <div class="skills">
+              <div class="skill">Django</div>
+              <div class="skill">Angular</div>
+              <div class="skill">Firebase</div>
+              <div class="skill">AWS (S3, SNS)</div>
+              <div class="skill">NestJS</div>
+              <div class="skill">MySQL / PostgreSQL</div>
+              <div class="skill">JavaScript / Node.js</div>
+              <div class="skill">Python</div>
+              <div class="skill">Git / GitHub</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2>Education</h2>
+            <p class="small">
+              B.E. in Electronics and Communication — University Institute of
+              Technology, Burdwan (Jul 2015 — Aug 2019)
+            </p>
+          </div>
+
+          <div class="section">
+            <h2>Certifications</h2>
+            <p class="small">Web Development with Angular — Udemy (2023)</p>
+          </div>
+        </section>
+
+        <aside class="right">
+          <div class="card">
+            <h3 style="margin-top: 0">Professional Snapshot</h3>
+            <p class="small">
+              Awarded Impact Award at KPMG. Experience across banking,
+              education, insurance. Strong full-stack delivery using Angular +
+              Django + Node ecosystems.
+            </p>
+            <div class="stats">
+              <div class="stat">
+                <strong>Years</strong>
+                <div class="small">3+ (pro)</div>
+              </div>
+              <div class="stat">
+                <strong>Domains</strong>
+                <div class="small">Banking · Education · Insurance</div>
+              </div>
+              <div class="stat">
+                <strong>Stack</strong>
+                <div class="small">Angular · Django · Node</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 14px">
+              <h4 style="margin: 0 0 8px 0">Contact</h4>
+              <div class="small">
+                prabhat.cioreview@gmail.com<br />+91 7908679275<br /><a
+                  href="https://github.com/Mspidy"
+                  target="_blank"
+                  >github.com/Mspidy</a
+                >
+              </div>
+            </div>
+
+            <div style="margin-top: 14px">
+              <a href="#contact" class="cta">Hire Me</a>
+            </div>
+          </div>
+
+          <div style="height: 18px"></div>
+
+          <div class="card">
+            <h4 style="margin: 0 0 8px 0">Interests</h4>
+            <p class="small">
+              Artificial Intelligence / Machine Learning · Web & Full Stack
+              Development · Data Structures & Algorithms
+            </p>
+          </div>
+        </aside>
+      </main>
+
+      <div class="section" id="contact">
+        <div class="card">
+          <h2>Contact & Hire</h2>
+          <p class="small">
+            I'm available for freelance and full-time opportunities. I can
+            contribute to backend/frontend architecture, integrations, cloud
+            deployment, and scalable product features.
+          </p>
+          <p class="small">
+            Email:
+            <a href="mailto:prabhat.cioreview@gmail.com"
+              >prabhat.cioreview@gmail.com</a
+            ><br />Phone: +91 7908679275<br />GitHub:
+            <a href="https://github.com/Mspidy" target="_blank">Mspidy</a>
+          </p>
+        </div>
+      </div>
+
+      <footer>
+        © <span id="year"></span> Prabhat Dubey — Built with HTML & CSS • Resume
+        last updated: March 2025
+      </footer>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" style="display: none">
+      <div class="close">
+        <button id="closeMenu" class="menu-btn">✕</button>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <script>
+      // small interactive helpers
+      document.getElementById("year").textContent = new Date().getFullYear();
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const closeMenu = document.getElementById("closeMenu");
+      menuBtn &&
+        menuBtn.addEventListener("click", () => {
+          mobileMenu.style.display = "block";
+        });
+      closeMenu &&
+        closeMenu.addEventListener("click", () => {
+          mobileMenu.style.display = "none";
+        });
+
+      // smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (href.length > 1) {
+            e.preventDefault();
+            document
+              .querySelector(href)
+              .scrollIntoView({ behavior: "smooth", block: "start" });
+            mobileMenu.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
